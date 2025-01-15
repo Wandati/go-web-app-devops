@@ -8,12 +8,12 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o /main .
+RUN go build -o main .
 
 #Final Stage Distroless Image
 FROM gcr.io/distroless/base
 
-COPY --from=base /app/main/ .
+COPY --from=base /app/main .
 
 COPY --from=base /app/static/ ./static
 
